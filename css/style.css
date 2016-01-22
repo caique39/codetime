@@ -1,0 +1,9 @@
+*{
+	margin: 0;
+	padding: 0
+}
+.center{
+	height: auto;
+	margin: 0 auto;
+	width: 369px
+}
