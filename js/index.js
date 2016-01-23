@@ -1,35 +1,30 @@
 ;(function(window, document) {
 	'use strict';
-	var app = (function() {
-		var _private = {};
-		var publik = {};
-		_private.setText = function(text, selector) {
-			var finall = text.split(' '),
-					element = document.querySelector(selector),
-					length = finall.length,
-					i;
-			console.log(finall);
-			if(finall){
-				for(i = 0; i < length; i++){
-					element.style[finall[i]] = finall[i + 1];
-				}
-			}
-		}
 
-		publik.verifyText = function(text, selector) {
-			if(text && selector){
-				_private.setText(text, selector);
-			}
-		}
-										
-		return publik;
-	})();
-	var textArea = document.querySelector('textarea');
-	var selector = prompt('Digite o campo que quer editar:');
-	textArea.addEventListener('keyup', function(){
-		if(textArea.value === 'mod'){
-			selector = prompt('Digite o campo que quer editar:');
-		}
-		app.verifyText(textArea.value, selector);
-	});
+	/** Criando variáveis de cache */
+	var iframe = document.querySelector('.result__window'),
+  		ifrw = iframe.contentWindow || iframe.contentDocument.document || iframe.contentDocument,
+			button = document.querySelector('#save'),
+			textArea = document.querySelector('.code__field'),
+			selector = '';
+
+	/** Função para salvar aqui */
+	function save() {
+		var blob = new Blob([textArea.value], {type: "text/plain;charset=utf-8"});
+		saveAs(blob, "dados.html");
+	};
+
+	/** Função que adiciona contéudo ao iframe */
+	function addContent() {
+			ifrw.document.open();
+  		ifrw.document.write(textArea.value);  
+  		ifrw.document.close();
+	};
+
+	/** Chamada da função para salvar arquivo */
+	button.addEventListener('click', save); 
+	
+	/** Chamada da função para adicionar conteúdo ao iframe */
+	textArea.addEventListener('keyup', addContent);
+
 })(window, document);

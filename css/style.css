@@ -2,8 +2,38 @@
 	margin: 0;
 	padding: 0
 }
-.center{
+.code{
+	width: 50%;
 	height: auto;
-	margin: 0 auto;
-	width: 369px
+	min-height: 600px;
+	float: left;
+}
+.field{
+	width: 90%;
+	margin: 20px;
+	height: 500px;
+	border-radius: 10px;
+	padding: 10px;
+}
+.code__field{
+	font-size: 2em;
+	font-family: sans-serif;
+	outline: none;
+	resize: none;
+}
+iframe{
+	border: 1px solid black;
+	background-color: #fff;
+}
+#save{
+	margin: 0;
+	width: 90%;
+	margin: 0 5% 5% 5%;
+	outline: none;
+	padding: 10px;
+	background-color: rgba(0, 0, 0, .5);
+	border-radius: 5px;
+	border: 2px solid #fff;
+	color: #fff;
+	font-size: 1.5em;
 }

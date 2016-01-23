@@ -4,13 +4,20 @@
 		<meta charset="UTF-8">
 		<title>Console</title>
 		<link rel="stylesheet" href="./css/style.css">
+		<style>
+			#iframewrapper {
+				width: 400px;
+				height: 400px;
+			}
+		</style>
 	</head>
 	<body>
-		<h1>Console CSS</h1>
-		<div class="center">
-			<textarea cols="50" rows="25"></textarea>
+		<div class="code">
+			<textarea class="field code__field"></textarea>
 			<input type="submit" id="save" value="Save">
-			<input type="submit" id="saveHtml" value="Save Html">
+		</div>
+		<div class="code">
+			<iframe class="field result__window" frameborder="0"></iframe>
 		</div>
 		<script src="./js/FileSaver.min.js"></script>
 		<script src="./js/index.js"></script>
