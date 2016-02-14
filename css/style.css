@@ -24,6 +24,9 @@ body {
 .box.code__field {
 	border-color: #ecf0f1;
 }
+.box.result__window {
+	padding: 0;
+}
 .clear {
 	clear: both;
 }
