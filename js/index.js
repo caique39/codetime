@@ -51,7 +51,7 @@
 	   	e.preventDefault();
 	  	var start = this.selectionStart;
 	  	var end = this.selectionEnd;
-	   	this.value = this.value.substring(0, start) + "   " + this.value.substring(end);
+	   	this.value = this.value.substring(0, start) + "  " + this.value.substring(end);
 	   	end = start + 1; 
 		}
 	}; 
