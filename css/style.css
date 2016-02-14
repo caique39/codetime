@@ -119,12 +119,12 @@ body {
 /* ----------- CLOSE INPUT'S AND CIA ----------- */
 /* ------------------ FOOTER ------------------- */
 .footer {
+	background-color: #263238;
+	color: #fff;
+	margin-bottom: -21px;
 	padding: 1em 0;
 	text-align: center;
-	margin-bottom: -21px;
 	width: 100%;
-	color: #fff;
-	background-color: #263238;
 }
 /* ----------------- CLOSE FOOTER ---------------*/
 /* -------------------- RESPONSIVE --------------*/
