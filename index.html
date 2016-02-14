@@ -2,25 +2,35 @@
 <html lang="pt-BR">
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 		<title>CodeTime</title>
 		<link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="./css/style.css">
 	</head>
 	<body>
-		<nav class="nav">
-			<h1 class="text-center title">CodeTime - HTML/CSS/JavaScript 
+		<header class="header">
+			<h1 class="text-center title">CodeTime 
 				<span class="heart">&hearts;</span>.
 			</h1>
+		</header>
+		<nav class="nav">
+		 	<ul class="nav__list">
+		 		<li class="nav__list--item">CSS</li>
+		 		<li class="nav__list--item">HTML</li>
+		 		<li class="nav__list--item">JavaScript</li>
+		 	</ul>
 		</nav>
 		<div class="container">
 			<div class="code">
-				<textarea placeholder="Digite seu código aqui..." class="box code__field" autocomplete="false"></textarea>
-				<input type="submit" class="btn-default saveComplete" value="Salvar - Completo">
-				<input type="submit" class="btn-default saveCSS" value="Salvar - CSS">
-				<input type="submit" class="btn-default saveJS" value="Salvar - JS">
+				<textarea placeholder="Digite seu código aqui..." class="box code__field" autocomplete="false" spellcheck="false"></textarea>
+				<button type="button" class="btn btn--default saveComplete">Salvar - Completo</button>
+				<button type="button" class="btn btn--default saveCSS">Salvar - CSS</button>
+				<button type="button" class="btn btn--default saveJS">Salvar - JS</button>
+				<button type="button" class="btn btn--default clear raised">Limpar Tela</button>
 			</div>
 			<div class="code">
 				<iframe class="box result__window" frameborder="0"></iframe>
+				<button type="button" class="btn btn--right openWindow">Abrir resultado em nova aba</button>
 			</div>
 		</div>
 		<div class="clear"></div>

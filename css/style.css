@@ -24,8 +24,8 @@ body {
 	clear: both;
 }
 .code {
-	width: calc(50% - 2px);
-	margin-right: 2px;
+	width: calc(50% - 5px);
+	margin-right: 5px;
 	float: left;
 }
 .container {
@@ -34,7 +34,7 @@ body {
 	display: block;
 }
 .heart {
-	color: red;
+	color: rgb(255, 90, 90);
 	font-size: 1.2em;
 }
 .lead {
@@ -43,6 +43,10 @@ body {
 }
 .link {
 	font-weight: 500;
+	text-decoration: none;
+}
+.link:hover {
+	text-decoration: underline;
 }
 .link, .list__item, .title, .title__info {
 	color: #fff;
@@ -58,11 +62,34 @@ body {
 	text-align: center;
 	font-family: 'PT sans', sans-serif;
 }
+/* ---------------------- HEADER ------------------ */
+.header {
+	background-color: #2c3e50;
+	padding: 1.5em 0;	
+}
+/* --------------------- CLOSE HEADER ------------- */
 /* ---------------------- NAV ---------------------*/
 .nav {
-	background-color: #2c3e50;
+	width: 100%;
+	background-color: #34495e;
 	margin-bottom: 20px;
-	padding: 1.5em 0;
+}
+.nav__list {
+	width: 100%;
+	list-style: none;
+	display: flex;
+}
+.nav__list--item {
+	float: left;
+	padding: 1em 0;
+	text-align: center;
+	color: #fff;
+	font-family: 'PT sans', sans-serif;
+	transition: all .3s ease-in;
+	width: 100%;
+}
+.nav__list--item:hover {
+	background-color: #2c3d90;
 }
 /* ---------------------- CLOSE NAV ---------------*/
 /* ---------------------- INFO --------------------*/
@@ -95,20 +122,33 @@ body {
 }
 /* ----------------- CLOSE CURIOSITY ----------- */ 
 /* ----------------- INPUT'S AND CIA ----------- */
-.btn-default {
+.btn {
 	font-family: 'PT sans', sans-serif;
 	margin: 10px 10px 20px 0;
 	outline: none;
 	padding: 10px 15px;
-	background-color: #2c3e50;
-	border: none;
-	color: #fff;
 	font-size: 1.1em;
+	transition: all .3s ease-in;
+	border: none;
 }
-.btn-default:hover {
+.btn--default {
+	background-color: #2c3e50;
+	color: #fff;
+	
+}
+.btn--default:hover {
 	cursor: pointer;
-	box-shadow: 3px 3px 24px #2c3e50;
+	box-shadow: -3px 3px 18px #2c3e50;
 	background-color: #34495e;
+}
+.btn--right {
+	background-color: #2c3d90;
+	color: #fff;
+}
+.btn--right:hover {
+	cursor: pointer;
+	box-shadow: -3px 3px 18px #fff;
+	background-color: #2c3d66;
 }
 .code__field {
 	font-size: 1.5em;
@@ -129,7 +169,7 @@ body {
 /* ----------------- CLOSE FOOTER ---------------*/
 /* -------------------- RESPONSIVE --------------*/
 @media (max-width: 900px) {
-	.code {
+	.btn, .code {
 		width: 100%;
 	}
 }
