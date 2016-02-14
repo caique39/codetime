@@ -11,7 +11,7 @@
 			selector = '';
 	var addContent = function addContent(e) {
 		ifrw.document.open();
-		ifrw.document.write(textArea.value || '<h3 style="font-family: sans-serif;">O resultado ficará aqui...</h3>'); 
+		ifrw.document.write(textArea.value || '<h3 style="font-family: sans-serif; color: gray;">O resultado ficará aqui...</h3>'); 
   	ifrw.document.close();
   	return textArea.value;
 	};
@@ -57,7 +57,7 @@
 	}; 
 	var contentWindowDefault = function contentWindowDefault() {
 		ifrw.document.open(); 
-		ifrw.document.write('<h3 style="font-family: sans-serif;">O resultado ficará aqui...</h3>'); 
+		ifrw.document.write('<h3 style="font-family: sans-serif; color: gray;">O resultado ficará aqui...</h3>'); 
 		ifrw.document.close();
 	};
 	contentWindowDefault();
