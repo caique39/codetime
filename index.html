@@ -5,6 +5,8 @@
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 		<title>CodeTime</title>
 		<link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="./css/codemirror.css">
+		<link rel="stylesheet" href="./css/midnight.css">
 		<link rel="stylesheet" href="./css/style.css">
 	</head>
 	<body>
@@ -22,7 +24,7 @@
 		</nav>
 		<div class="container">
 			<div class="code">
-				<textarea placeholder="Digite seu código aqui..." class="box code__field" autocomplete="false" spellcheck="false"></textarea>
+				<textarea placeholder="Digite seu código aqui..." class="box code__field" autocomplete="false" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
 				<button type="button" class="btn btn--default saveComplete">Salvar - Completo</button>
 				<button type="button" class="btn btn--default saveCSS">Salvar - CSS</button>
 				<button type="button" class="btn btn--default saveJS">Salvar - JS</button>
@@ -45,7 +47,7 @@
 				<h2 class="text-center title__info">Principais features:</h2>
 				<ul>
 					<li class="list__item">Facilidade.</li>
-					<li class="list__item">Indentação com tab.</li>
+					<li class="list__item">Integrado com Emmet.</li>
 					<li class="list__item">Mostra os resultados do seu script em tempo real no console.</li>
 					<li class="list__item">Possibilidade de salvar arquivos separadamente.</li>
 					<li class="list__item">Velocidade.</li>
@@ -66,6 +68,7 @@
 			</p>
 		</footer>
 		<script src="./js/FileSaver.min.js"></script>
+		<script src="./js/emmet.min.js"></script>
 		<script src="./js/index.js"></script>
 	</body>
 </html>

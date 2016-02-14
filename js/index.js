@@ -45,15 +45,6 @@
 	var scroll = function scroll() {
 		(document.body.scrollTop += 2) >= document.querySelector('.header').clientHeight ? 
 			document.body.scrollTop = document.querySelector('.header').clientHeight : setTimeout(scroll, 10); 
-	};
-	var tabIndent = function tabIndent(e) {
-		if(e.keyCode == 9 || e.which == 9){
-	   	e.preventDefault();
-	  	var start = this.selectionStart;
-	  	var end = this.selectionEnd;
-	   	this.value = this.value.substring(0, start) + "  " + this.value.substring(end);
-	   	end = start + 1; 
-		}
 	}; 
 	var contentWindowDefault = function contentWindowDefault() {
 		ifrw.document.open(); 
@@ -65,15 +56,21 @@
 	saveCSSButton.addEventListener('click', saveCSS, false);
 	saveJSButton.addEventListener('click', saveJS, false);
 	textArea.addEventListener('keyup', addContent, false);
-	textArea.addEventListener('keydown', tabIndent, false);
+	// textArea.addEventListener('keydown', tabIndent, false);
 	textArea.addEventListener('click', scroll, false);
 	clearCode.addEventListener('click', function() {
  		textArea.value = '';
+ 		textArea.focus();
  		contentWindowDefault();
+ 		scroll();
 	}, false);
 	openWindow.addEventListener('click', function() {
 		var myWindow = window.open('','_blank');
 		myWindow.document.write(addContent());
+	});
+	emmet.require('textarea').setup({
+    pretty_break: true, 
+    use_tab: true       
 	});
 })(window, document);
 
