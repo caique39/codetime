@@ -20,6 +20,7 @@ body {
 }
 .box:focus {
 	border-color: #3dd95e;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 .box.code__field {
 	border-color: #ecf0f1;
@@ -68,6 +69,22 @@ body {
 .text-center {
 	text-align: center;
 	font-family: 'PT sans', sans-serif;
+}
+::selection {
+	background-color: rgba(142, 68, 173,1.0);
+	color: #fff;
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+		background-color: rgba(127, 140, 141,1.0); 
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(44, 62, 80, .8); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(52, 73, 94, .5); 
 }
 /* ---------------------- HEADER ------------------ */
 .header {
