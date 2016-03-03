@@ -36,7 +36,7 @@
 	var saveCSS = function saveCSS() {
 		var textValue = textArea.value.trim();
 		var regCss = new RegExp("<style>([^<]+)\</style>");
-		if(regCss.exec(textValue)) {
+		if(regCss.test(textValue)) {
 			var file = new Blob([regCss.exec(textValue)[1].trim()], {type: 'text/plain; charset=utf-8'});
 			var nameFile = prompt('Digite o nome do arquivo (sem extensão):');
 			if(nameFile) {
@@ -53,7 +53,7 @@
 	var saveJS = function saveJS() {
 		var textValue = textArea.value.trim();
 		var regJs = new RegExp("<script>([^<]+)\</script>");
-		if(regJs.exec(textValue)) {
+		if(regJs.test(textValue)) {
 			var file = new Blob([regJs.exec(textValue)[1].trim()], {type: 'text/plain; charset=utf-8'});
 			var nameFile = prompt('Digite o nome do arquivo (sem extensão):');
 			if(nameFile) {
