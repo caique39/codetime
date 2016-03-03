@@ -2,15 +2,15 @@
 	'use strict';
 
 	var iframe = document.querySelector('.result__window'),
-  		ifrw = iframe.contentWindow || iframe.contentDocument.document || iframe.contentDocument,
-			saveCompleteButton = document.querySelector('.saveComplete'),
-			saveCSSButton = document.querySelector('.saveCSS'),
-			saveJSButton = document.querySelector('.saveJS'),
-			textArea = document.querySelector('.code__field'),
-			clearCode = document.querySelector('.clear'),
-			openWindow = document.querySelector('.openWindow'),
-			appCache = window.applicationCache,
-			selector = '';
+  	ifrw = iframe.contentWindow || iframe.contentDocument.document || iframe.contentDocument,
+		saveCompleteButton = document.querySelector('.saveComplete'),
+		saveCSSButton = document.querySelector('.saveCSS'),
+		saveJSButton = document.querySelector('.saveJS'),
+		textArea = document.querySelector('.code__field'),
+		clearCode = document.querySelector('.clear'),
+		openWindow = document.querySelector('.openWindow'),
+		appCache = window.applicationCache,
+		selector = '';
 
 	var addContent = function addContent(e) {
 		ifrw.document.open();
@@ -27,10 +27,10 @@
 			if(nameFile) {
 				saveAs(file, nameFile + '.html');
 				alert('Arquivo criado com sucesso!');
-			}else {
+			} else {
 				alert('Arquivo não pode ser criado.');
 			}
-		}else {
+		} else {
 			window.alert('Não foi possível criar arquivo vazio.');
 		}
 	};
@@ -44,10 +44,10 @@
 			if(nameFile) {
 				saveAs(file, nameFile + '.css');
 				alert('Arquivo criado com sucesso!');
-			}else {
+			} else {
 				alert('Arquivo não pode ser criado.');
 			}
-		}else {
+		} else {
 			window.alert('Não encontramos nenhum estilo em seu código.');
 		}
 	};
@@ -61,10 +61,10 @@
 			if(nameFile) {
 				saveAs(file, nameFile + '.js');
 				alert('Arquivo criado com sucesso!');
-			}else {
+			} else {
 				alert('Arquivo não pode ser criado.');
 			}
-		}else {
+		} else {
 			window.alert('Não encontramos nenhum script em seu código');
 		}
 	};
@@ -112,8 +112,8 @@
 	});
 
 	emmet.require('textarea').setup({
-    pretty_break: true, 
-    use_tab: true       
+		pretty_break: true,
+		use_tab: true       
 	});
 
 	saveCompleteButton.addEventListener('click', saveComplete, false);
