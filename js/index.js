@@ -9,12 +9,14 @@
 			textArea = document.querySelector('.code__field'),
 			clearCode = document.querySelector('.clear'),
 			openWindow = document.querySelector('.openWindow'),
+			appCache = window.applicationCache,
 			selector = '';
 
 	var addContent = function addContent(e) {
 		ifrw.document.open();
 		ifrw.document.write(textArea.value || '<h3 style="font-family: sans-serif; color: gray;">O resultado ficará aqui...</h3>'); 
   	ifrw.document.close();
+  	localStorage.setItem('code', textArea.value);
   	return textArea.value;
 	};
 
@@ -49,7 +51,7 @@
 			window.alert('Não encontramos nenhum estilo em seu código.');
 		}
 	};
-	
+
 	var saveJS = function saveJS() {
 		var textValue = textArea.value.trim();
 		var regJs = new RegExp("<script>([^<]+)\</script>");
@@ -76,7 +78,26 @@
 		ifrw.document.open(); 
 		ifrw.document.write('<h3 style="font-family: sans-serif; color: gray;">O resultado ficará aqui...</h3>'); 
 		ifrw.document.close();
-	};		
+	};
+
+	var storageCode = function storageCode() {
+		if (typeof(Storage) !== 'undefined') {
+			if(localStorage.getItem('code')) {
+				textArea.value = localStorage.getItem('code');
+			}
+		}
+   	return;
+	};	
+
+	document.addEventListener('DOMContentLoaded', storageCode);
+
+	window.addEventListener('load', function(e) {
+		appCache.addEventListener('updateready', function(e) {
+			if (appCache.status == appCache.UPDATEREADY) {
+				appCache.swapCache();
+			}
+		}, false);
+	}, false);
 
 	clearCode.addEventListener('click', function() {
  		textArea.value = '';
@@ -102,5 +123,5 @@
 	textArea.addEventListener('keyup', addContent, false);
 
 	contentWindowDefault();
-})(window, document);
 
+})(window, document);
