@@ -14,7 +14,7 @@
 
 	var addContent = function addContent(e) {
 		ifrw.document.open();
-		ifrw.document.write(textArea.value || '<h3 style="font-family: sans-serif; color: gray;">O resultado ficará aqui...</h3>'); 
+		ifrw.document.write(textArea.value || '<h3 style="font-family: sans-serif; color: gray;">O resultado ficará aqui...</h3>');
   	ifrw.document.close();
   	localStorage.setItem('code', textArea.value);
   	return textArea.value;
@@ -70,13 +70,13 @@
 	};
 
 	var scroll = function scroll() {
-		(document.body.scrollTop += 2) >= document.querySelector('.header').clientHeight ? 
-			document.body.scrollTop = document.querySelector('.header').clientHeight : setTimeout(scroll, 10); 
-	}; 
+		(document.body.scrollTop += 2) >= document.querySelector('.header').clientHeight ?
+			document.body.scrollTop = document.querySelector('.header').clientHeight : setTimeout(scroll, 10);
+	};
 
 	var contentWindowDefault = function contentWindowDefault() {
-		ifrw.document.open(); 
-		ifrw.document.write('<h3 style="font-family: sans-serif; color: gray;">O resultado ficará aqui...</h3>'); 
+		ifrw.document.open();
+		ifrw.document.write('<h3 style="font-family: sans-serif; color: gray;">O resultado ficará aqui...</h3>');
 		ifrw.document.close();
 	};
 
@@ -87,7 +87,7 @@
 			}
 		}
    	return;
-	};	
+	};
 
 	document.addEventListener('DOMContentLoaded', storageCode);
 
@@ -113,7 +113,7 @@
 
 	emmet.require('textarea').setup({
 		pretty_break: true,
-		use_tab: true       
+		use_tab: true
 	});
 
 	saveCompleteButton.addEventListener('click', saveComplete, false);
