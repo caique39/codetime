@@ -6,3 +6,10 @@ CACHE MANIFEST
 ./js/smoothscroll.js
 ./img/recursao.PNG
 ./css/style.css
+./fonts/ptSans.css
+./fonts/ptSansCyrillicExt.woff2
+./fonts/ptSansCyrillic.woff2
+./fonts/ptSansLatinExt.woff2
+./fonts/ptSansLatin.woff2
+
+
