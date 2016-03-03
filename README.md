@@ -4,7 +4,7 @@ CodeTime é uma espécie de console capaz de ler código HTML, CSS e JavaScript 
 
 ### Por que usá-lo?
 
-Com o CodeTime você pode acompanhar o resultado das suas linhas de código em tempo real. Além de é claro, ter suporte para smartphones e tablets. Assim você pode criar edições simples e salva-las, usando apenas seu navegador. Com o CodeTime você pode fazer testes de estilização em input's, cores de background, vefiricação de compatibilidade de determinadas instruções em diversos browsers; o céu não é o limite.
+Com o CodeTime você pode acompanhar o resultado das suas linhas de código em tempo real. Além de é claro, ter suporte para smartphones e tablets. Assim você pode criar edições simples e salva-las, usando apenas seu navegador. Com o CodeTime você pode fazer testes de estilização em input's, cores de background, verificação de compatibilidade de determinadas instruções em diversos browsers; o céu não é o limite.
 
 ### Principais features:
 
