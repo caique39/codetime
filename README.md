@@ -23,13 +23,13 @@ Simples! Basta usar as tag's básicas de marcação:
 
 Você pode simplemente colocar o elemento desejado, exemplo:
 
-```
+```html
 <button>Olá, Mundo</button>
 ```
 
 ou usar a estrutura básica do HTML5: 
 
-```
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -44,13 +44,13 @@ Adendo: Como o CodeTime tem integração com o Emmet, para escrever a estrutura 
 
 #### CSS: 
 
-```
+```css
 <style> Sua eslização aqui. </style>
 ```
 
 #### JavaScript: 
 
-```
+```javascript
 <script> Seus comandos JavaScript aqui. </script>
 ```
 
