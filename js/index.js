@@ -114,6 +114,8 @@
 	emmet.require('textarea').setup({
 		pretty_break: true,
 		use_tab: true
+    		pretty_break: true,
+    		use_tab: true
 	});
 
 	saveCompleteButton.addEventListener('click', saveComplete, false);
