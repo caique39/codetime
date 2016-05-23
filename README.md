@@ -40,7 +40,7 @@ ou usar a estrutura básica do HTML5:
 </html>
 
 ```
-Adendo: Como o CodeTime tem integração com o Emmet, para escrever a estrutura supracitada basta realizar o seguinte comando: ` ! + Tab `.
+Adendo: Como o CodeTime tem integração com o Emmet, para escrever a estrutura supracitada basta executar o seguinte comando: ` ! + Tab `.
 
 #### CSS: 
 
