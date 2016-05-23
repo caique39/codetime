@@ -9,6 +9,7 @@
 		textArea = document.querySelector('.code__field'),
 		clearCode = document.querySelector('.clear'),
 		openWindow = document.querySelector('.openWindow'),
+    btnColor = document.querySelector('.change--color'),
 		appCache = window.applicationCache,
 		selector = '';
 
@@ -88,6 +89,15 @@
 		}
    	return;
 	};
+  
+  var changeColor = function changeColor() {
+    var colors = ['#95a5a6', '#2ecc71', '#e74c3c', '#2c3e50', '#3498db'];
+    document.querySelector('.header').style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    document.querySelector('.nav').style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    document.querySelector('.main').style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    textArea.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    return;
+  };
 
 	document.addEventListener('DOMContentLoaded', storageCode);
 
@@ -112,8 +122,6 @@
 	});
 
 	emmet.require('textarea').setup({
-		pretty_break: true,
-		use_tab: true,
     pretty_break: true,
     use_tab: true
 	});
@@ -123,7 +131,7 @@
 	saveJSButton.addEventListener('click', saveJS, false);
 	textArea.addEventListener('click', scroll, false);
 	textArea.addEventListener('keyup', addContent, false);
-
+  btnColor.addEventListener('click', changeColor, false);
 	contentWindowDefault();
 
 })(window, document);
