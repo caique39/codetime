@@ -113,6 +113,19 @@
 		ifrw.document.close();
 	};
 
+	const openNewWindow = function openNewWindow() {
+		const myWindow = window.open("", "_blank");
+
+		myWindow.document.write(addContent());
+	};
+
+	const handleClearCode = function handleClearCode() {
+		editor.setValue("");
+		editor.focus();
+		contentWindowDefault();
+		scroll();
+	};
+
 	const storageCode = function storageCode() {
 		if (typeof Storage !== "undefined") {
 			if (localStorage.getItem("code")) {
@@ -125,24 +138,9 @@
 
 	document.addEventListener("DOMContentLoaded", storageCode);
 
-	clearCode.addEventListener(
-		"click",
-		function () {
-			editor.setValue("");
-			editor.focus();
-			contentWindowDefault();
-			scroll();
-		},
-		false
-	);
-
-	openWindow.addEventListener("click", function () {
-		const myWindow = window.open("", "_blank");
-
-		myWindow.document.write(addContent());
-	});
-
 	editor.on("change", addContent);
+	clearCode.addEventListener("click", handleClearCode, false);
+	openWindow.addEventListener("click", openNewWindow);
 	saveCompleteButton.addEventListener("click", saveComplete, false);
 	saveCSSButton.addEventListener("click", saveCSS, false);
 	saveJSButton.addEventListener("click", saveJS, false);
