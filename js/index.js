@@ -1,137 +1,151 @@
-;(function(window, document, undefined) {
-	'use strict';
+(function (window, document) {
+	"use strict";
 
-	var iframe = document.querySelector('.result__window'),
-  	ifrw = iframe.contentWindow || iframe.contentDocument.document || iframe.contentDocument,
-		saveCompleteButton = document.querySelector('.saveComplete'),
-		saveCSSButton = document.querySelector('.saveCSS'),
-		saveJSButton = document.querySelector('.saveJS'),
-		textArea = document.querySelector('.code__field'),
-		clearCode = document.querySelector('.clear'),
-		openWindow = document.querySelector('.openWindow'),
-    btnColor = document.querySelector('.change--color'),
-		appCache = window.applicationCache,
-		selector = '';
+	const iframe = document.querySelector(".result__window");
+	const saveCompleteButton = document.querySelector(".saveComplete");
+	const saveCSSButton = document.querySelector(".saveCSS");
+	const saveJSButton = document.querySelector(".saveJS");
+	const textArea = document.getElementById("code");
+	const clearCode = document.querySelector(".clear");
+	const openWindow = document.querySelector(".openWindow");
+	const ifrw =
+		iframe.contentWindow ||
+		iframe.contentDocument.document ||
+		iframe.contentDocument;
 
-	var addContent = function addContent(e) {
+	const editor = CodeMirror.fromTextArea(textArea, {
+		mode: "htmlmixed",
+		extraKeys: {
+			Tab: "emmetExpandAbbreviation",
+		},
+	});
+
+	const editorValue = () => editor.getValue();
+
+	const addContent = function addContent() {
+		const value = editorValue();
+
 		ifrw.document.open();
-		ifrw.document.write(textArea.value || '<h3 style="font-family: sans-serif; color: gray;">O resultado ficará aqui...</h3>');
-  	ifrw.document.close();
-  	localStorage.setItem('code', textArea.value);
-  	return textArea.value;
+		ifrw.document.write(
+			value ||
+				'<h3 class="placeholder--default">O resultado ficará aqui...</h3>'
+		);
+		ifrw.document.close();
+		localStorage.setItem("code", value);
+
+		return value;
 	};
 
-	var saveComplete = function saveComplete() {
-		if(textArea.value) {
-			var file = new Blob([textArea.value], {type: 'text/plain; charset=utf-8'});
-			var nameFile = prompt('Digite o nome do arquivo (sem extensão):');
-			if(nameFile) {
-				saveAs(file, nameFile + '.html');
-				alert('Arquivo criado com sucesso!');
+	const saveComplete = function saveComplete() {
+		const code = editorValue();
+
+		if (code) {
+			const nameFile = prompt("Digite o nome do arquivo (sem extensão):");
+			const file = new Blob([code], {
+				type: "text/plain; charset=utf-8",
+			});
+
+			if (nameFile) {
+				saveAs(file, nameFile + ".html");
+				alert("Arquivo criado com sucesso!");
 			} else {
-				alert('Arquivo não pode ser criado.');
+				alert("Arquivo não pode ser criado.");
 			}
 		} else {
-			window.alert('Não foi possível criar arquivo vazio.');
+			window.alert("Não foi possível criar arquivo vazio.");
 		}
 	};
 
-	var saveCSS = function saveCSS() {
-		var textValue = textArea.value.trim();
-		var regCss = new RegExp('<style>([^<]+)\</style>');
-		if(regCss.test(textValue)) {
-			var file = new Blob([regCss.exec(textValue)[1].trim()], {type: 'text/plain; charset=utf-8'});
-			var nameFile = prompt('Digite o nome do arquivo (sem extensão):');
-			if(nameFile) {
-				saveAs(file, nameFile + '.css');
-				alert('Arquivo criado com sucesso!');
+	const saveCSS = function saveCSS() {
+		const textValue = editorValue().trim();
+		const regCss = new RegExp("<style>([^<]+)</style>");
+
+		if (regCss.test(textValue)) {
+			const file = new Blob([regCss.exec(textValue)[1].trim()], {
+				type: "text/plain; charset=utf-8",
+			});
+			const nameFile = prompt("Digite o nome do arquivo (sem extensão):");
+			if (nameFile) {
+				saveAs(file, nameFile + ".css");
+				alert("Arquivo criado com sucesso!");
 			} else {
-				alert('Arquivo não pode ser criado.');
+				alert("Arquivo não pode ser criado.");
 			}
 		} else {
-			window.alert('Não encontramos nenhum estilo em seu código.');
+			window.alert("Não encontramos nenhum estilo em seu código.");
 		}
 	};
 
-	var saveJS = function saveJS() {
-		var textValue = textArea.value.trim();
-		var regJs = new RegExp('<script>([^<]+)\</script>');
-		if(regJs.test(textValue)) {
-			var file = new Blob([regJs.exec(textValue)[1].trim()], {type: 'text/plain; charset=utf-8'});
-			var nameFile = prompt('Digite o nome do arquivo (sem extensão):');
-			if(nameFile) {
-				saveAs(file, nameFile + '.js');
-				alert('Arquivo criado com sucesso!');
+	const saveJS = function saveJS() {
+		const textValue = editorValue().trim();
+		const regJs = new RegExp("<script>([^<]+)</script>");
+
+		if (regJs.test(textValue)) {
+			const nameFile = prompt("Digite o nome do arquivo (sem extensão):");
+			const file = new Blob([regJs.exec(textValue)[1].trim()], {
+				type: "text/plain; charset=utf-8",
+			});
+
+			if (nameFile) {
+				saveAs(file, nameFile + ".js");
+				alert("Arquivo criado com sucesso!");
 			} else {
-				alert('Arquivo não pode ser criado.');
+				alert("Arquivo não pode ser criado.");
 			}
 		} else {
-			window.alert('Não encontramos nenhum script em seu código');
+			window.alert("Não encontramos nenhum script em seu código");
 		}
 	};
 
-	var scroll = function scroll() {
-		(document.body.scrollTop += 2) >= document.querySelector('.header').clientHeight ?
-			document.body.scrollTop = document.querySelector('.header').clientHeight : setTimeout(scroll, 10);
+	const scroll = function scroll() {
+		(document.body.scrollTop += 2) >=
+		document.querySelector(".header").clientHeight
+			? (document.body.scrollTop =
+					document.querySelector(".header").clientHeight)
+			: setTimeout(scroll, 10);
 	};
 
-	var contentWindowDefault = function contentWindowDefault() {
+	const contentWindowDefault = function contentWindowDefault() {
 		ifrw.document.open();
-		ifrw.document.write('<h3 style="font-family: sans-serif; color: gray;">O resultado ficará aqui...</h3>');
+		ifrw.document.write(
+			'<h3 style="font-family: sans-serif; color: gray;">O resultado ficará aqui...</h3>'
+		);
 		ifrw.document.close();
 	};
 
-	var storageCode = function storageCode() {
-		if (typeof(Storage) !== 'undefined') {
-			if(localStorage.getItem('code')) {
-				textArea.value = localStorage.getItem('code');
+	const storageCode = function storageCode() {
+		if (typeof Storage !== "undefined") {
+			if (localStorage.getItem("code")) {
+				editor.setValue(localStorage.getItem("code"));
 			}
 		}
-   	return;
+
+		return;
 	};
-  
-  var changeColor = function changeColor() {
-    var colors = ['#95a5a6', '#2ecc71', '#e74c3c', '#2c3e50', '#3498db'];
-    document.querySelector('.header').style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    document.querySelector('.nav').style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    document.querySelector('.main').style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    textArea.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    return;
-  };
 
-	document.addEventListener('DOMContentLoaded', storageCode);
+	document.addEventListener("DOMContentLoaded", storageCode);
 
-	window.addEventListener('load', function(e) {
-		appCache.addEventListener('updateready', function(e) {
-			if (appCache.status == appCache.UPDATEREADY) {
-				appCache.swapCache();
-			}
-		}, false);
-	}, false);
+	clearCode.addEventListener(
+		"click",
+		function () {
+			editor.setValue("");
+			editor.focus();
+			contentWindowDefault();
+			scroll();
+		},
+		false
+	);
 
-	clearCode.addEventListener('click', function() {
- 		textArea.value = '';
- 		textArea.focus();
- 		contentWindowDefault();
- 		scroll();
-	}, false);
+	openWindow.addEventListener("click", function () {
+		const myWindow = window.open("", "_blank");
 
-	openWindow.addEventListener('click', function() {
-		var myWindow = window.open('','_blank');
 		myWindow.document.write(addContent());
 	});
 
-	emmet.require('textarea').setup({
-    pretty_break: true,
-    use_tab: true
-	});
+	editor.on("change", addContent);
+	saveCompleteButton.addEventListener("click", saveComplete, false);
+	saveCSSButton.addEventListener("click", saveCSS, false);
+	saveJSButton.addEventListener("click", saveJS, false);
 
-	saveCompleteButton.addEventListener('click', saveComplete, false);
-	saveCSSButton.addEventListener('click', saveCSS, false);
-	saveJSButton.addEventListener('click', saveJS, false);
-	textArea.addEventListener('click', scroll, false);
-	textArea.addEventListener('keyup', addContent, false);
-  btnColor.addEventListener('click', changeColor, false);
 	contentWindowDefault();
-
 })(window, document);
