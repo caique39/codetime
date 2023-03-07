@@ -2,6 +2,7 @@
 	"use strict";
 
 	const iframe = document.querySelector(".result__window");
+	const formatCodeButton = document.querySelector(".formatCode");
 	const saveCompleteButton = document.querySelector(".saveComplete");
 	const saveCSSButton = document.querySelector(".saveCSS");
 	const saveJSButton = document.querySelector(".saveJS");
@@ -34,6 +35,15 @@
 		localStorage.setItem("code", value);
 
 		return value;
+	};
+
+	const formatCode = function formatCode() {
+		const code = editorValue();
+		const formatted = prettier.format(code, {
+			parser: 'html',
+			plugins: [prettierPlugins.html]
+		});
+		editor.setValue(formatted);
 	};
 
 	const saveComplete = function saveComplete() {
@@ -141,6 +151,7 @@
 	editor.on("change", addContent);
 	clearCode.addEventListener("click", handleClearCode, false);
 	openWindow.addEventListener("click", openNewWindow);
+	formatCodeButton.addEventListener("click", formatCode, false);
 	saveCompleteButton.addEventListener("click", saveComplete, false);
 	saveCSSButton.addEventListener("click", saveCSS, false);
 	saveJSButton.addEventListener("click", saveJS, false);
