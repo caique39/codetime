@@ -19,35 +19,40 @@
 	</head>
 	<body>
 		<header class="header">
-			<h1 class="text-center title">CodeTime
-				<span class="heart">&hearts;</span>.
-      </h1>
+			<div class="header__title">
+				<h1 class="text-center title">CodeTime
+					<span class="heart">&hearts;</span>.
+				</h1>
+			</div>
+			<nav class="nav">
+				<ul class="nav__list">
+					<li class="nav__list--item">CSS</li>
+					<li class="nav__list--item">HTML</li>
+					<li class="nav__list--item">JavaScript</li>
+				</ul>
+			</nav>
 		</header>
-		<nav class="nav">
-		 	<ul class="nav__list">
-		 		<li class="nav__list--item">CSS</li>
-		 		<li class="nav__list--item">HTML</li>
-		 		<li class="nav__list--item">JavaScript</li>
-		 	</ul>
-    </nav>
-    <main class="main" role="main">
-      <div class="container">
-        <div class="code">
+		<main class="main" role="main">
+			<div class="container container--fluid">
+				<div class="code">
 					<form>
 						<textarea id="code" name="code" placeholder="Digite seu código aqui..."></textarea>
 					</form>
-          <button type="button" class="btn btn--default formatCode">Formatar</button>
-          <button type="button" class="btn btn--default saveComplete">Salvar - Completo</button>
-          <button type="button" class="btn btn--default saveCSS">Salvar - CSS</button>
-          <button type="button" class="btn btn--default saveJS">Salvar - JS</button>
-          <button type="button" class="btn btn--default clear raised">Limpar Tela</button>
-        </div>
-        <div class="code">
-          <iframe class="box result__window" frameborder="0"></iframe>
-          <button type="button" class="btn btn--right openWindow">Abrir resultado em nova aba</button>
-        </div>
-      </div>
-    </main>
+					<button type="button" class="btn btn--default formatCode">Formatar</button>
+					<select id="save-select" class="btn btn--default">
+						<option value="">Salvar</option>
+						<option value="full">Completo</option>
+						<option value="js">JS</option>
+						<option value="css">CSS</option>
+					</select>
+					<button type="button" class="btn btn--default clear raised">Limpar Tela</button>
+				</div>
+				<div class="code">
+					<iframe class="box result__window" frameborder="0"></iframe>
+					<button type="button" class="btn btn--right openWindow">Abrir resultado em nova aba</button>
+				</div>
+			</div>
+		</main>
 		<div class="clear"></div>
 		<section class="post info">
 			<div class="container">
@@ -72,16 +77,16 @@
 			<div class="container">
 				<h2 class="text-center title__info">Curiosidade:</h2>
 				<p class="lead__info">Como o
-						<a class="link" href="https://github.com/Caique39/Console">código fonte do CodeTime</a>
-						é aberto, você pode copiar o seu código fonte e assim colar inúmeras vezes dentro do console,
-						assim, obtendo uma experiência recursiva, como na imagem: </p>
+					<a class="link" href="https://github.com/Caique39/Console">código fonte do CodeTime</a>
+					é aberto, você pode copiar o seu código fonte e assim colar inúmeras vezes dentro do console,
+					assim, obtendo uma experiência recursiva, como na imagem: </p>
 				<img class="img__curiosity" src="img/recursao.PNG" alt="Recursão." title="Recursão.">
 			</div>
 		</section>
 		<footer class="footer">
 			<p class="lead">
 				Feito com <span class="heart">&hearts;</span> por
-					<a class="link" href="https://github.com/Caique39/">K2C</a>
+				<a class="link" href="https://github.com/Caique39/">K2C</a>
 			</p>
 		</footer>
 		<script src="https://unpkg.com/prettier@2.8.4/parser-html.js"></script>
