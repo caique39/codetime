@@ -3,9 +3,7 @@
 
 	const iframe = document.querySelector(".result__window");
 	const formatCodeButton = document.querySelector(".formatCode");
-	const saveCompleteButton = document.querySelector(".saveComplete");
-	const saveCSSButton = document.querySelector(".saveCSS");
-	const saveJSButton = document.querySelector(".saveJS");
+	const saveSelect = document.getElementById("save-select");
 	const textArea = document.getElementById("code");
 	const clearCode = document.querySelector(".clear");
 	const openWindow = document.querySelector(".openWindow");
@@ -44,6 +42,22 @@
 			plugins: [prettierPlugins.html]
 		});
 		editor.setValue(formatted);
+	};
+
+	const saveSelectChange = function saveSelectChange(event) {
+		const value = event.target.value;
+		const saveOptions = {
+			css: saveCSS,
+			js: saveJS,
+			full: saveComplete,
+		};
+
+		const save = saveOptions[value];
+
+		if (!value || !save) return;
+
+		save();
+		event.target.value = '';
 	};
 
 	const saveComplete = function saveComplete() {
@@ -103,7 +117,7 @@
 				alert("Arquivo não pode ser criado.");
 			}
 		} else {
-			window.alert("Não encontramos nenhum script em seu código");
+			window.alert("Não encontramos nenhum script em seu código.");
 		}
 	};
 
@@ -152,9 +166,7 @@
 	clearCode.addEventListener("click", handleClearCode, false);
 	openWindow.addEventListener("click", openNewWindow);
 	formatCodeButton.addEventListener("click", formatCode, false);
-	saveCompleteButton.addEventListener("click", saveComplete, false);
-	saveCSSButton.addEventListener("click", saveCSS, false);
-	saveJSButton.addEventListener("click", saveJS, false);
+	saveSelect.addEventListener('change', saveSelectChange, false);
 
 	contentWindowDefault();
 })(window, document);

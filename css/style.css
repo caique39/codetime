@@ -201,13 +201,14 @@ body {
 /* ----------------- CLOSE CURIOSITY ----------- */
 /* ----------------- INPUT'S AND CIA ----------- */
 .btn {
+	border: none;
+	border-radius: 3px;
 	font-family: "PT sans", sans-serif;
+	font-size: 1.1em;
 	margin: 10px 10px 20px 0;
 	outline: none;
 	padding: 10px 15px;
-	font-size: 1.1em;
 	transition: all 0.3s ease-in;
-	border: none;
 }
 
 .btn--default {
